@@ -29,14 +29,25 @@ public class scrapSpawner : MonoBehaviour
 		{
 			scraps[index].GetComponent<scrap>().ySpeed = -1;
 		}
+		else if (timeCount == 30f)
+		{
+			minSpawnTimer -= 2;
+			maxSpawnTimer -= 2;
+		}
 		else if (timeCount > 30f && timeCount < 60f)
 		{
 			scraps[index].GetComponent<scrap>().ySpeed = -2;
+			
+		}
+		else if (timeCount == 60f)
+		{
+			minSpawnTimer -= 2;
+			maxSpawnTimer -= 2;
 		}
 		else if (timeCount > 60f && timeCount < 90f)
 		{
 			scraps[index].GetComponent<scrap>().ySpeed = -3;
-
+			
 		}
 
 		if (spawnTimer <= 0) {
