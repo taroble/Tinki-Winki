@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Upgrade
   - Enemy
+  - Battery
+  - Bomb
+  - Razor
   layers:
   - Default
   - TransparentFX
@@ -40,6 +43,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1161726699
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 2977187975
     locked: 0
