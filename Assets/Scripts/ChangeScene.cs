@@ -14,4 +14,14 @@ public class ChangeScene : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void RestartMain()
+    {
+    	SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void StartMenu()
+    {
+    	SceneManager.LoadScene("Menu");
+    }
 }

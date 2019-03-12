@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     AudioSource audioS;
     public AudioClip[] sounds;
 
+    public GameObject gameOverCanvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +51,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             coll.enabled = false;
+            gameOverCanvas.SetActive(true);
         }
 
         if (timeCount >= seconds)

@@ -3,7 +3,22 @@ guid: 0b293f0cf86de1345af2472a6d6fedfb
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - playerSprite: {fileID: 21300000, guid: ef544bae02bc6dd4cadeab79c95c5925, type: 3}
+  - hurtSprite: {fileID: 21300000, guid: fb9ae68d64d80ba47bae882d7fbf97ea, type: 3}
+  - hurt1Sprite: {fileID: 21300000, guid: 39e8efa9c0f94c44589a4b5e8bc620af, type: 3}
+  - deadSprite: {fileID: 21300000, guid: 7ae5e938ef2cda84396a3c1d2bb135a7, type: 3}
+  - playerSprite1: {fileID: 21300000, guid: 0d3b10e6213fbc2419b4c6600051d280, type: 3}
+  - hurtSprite1: {fileID: 21300000, guid: cdb68b291c6b1da49a73fe646f9407d7, type: 3}
+  - hurt1Sprite1: {fileID: 21300000, guid: 1aa045b74db32254abf782b7bb1bc6d6, type: 3}
+  - health: {instanceID: 0}
+  - fullHealth: {fileID: 21300000, guid: 5724268011242594d8272091e88412e9, type: 3}
+  - halfHealth: {fileID: 21300000, guid: 0cec4e206b52a0d45929bf663ae64b6d, type: 3}
+  - lowHealth: {fileID: 21300000, guid: fec190d81bbab3a4c9bd0b80a2414e33, type: 3}
+  - noHealth: {fileID: 21300000, guid: f4a9278e03eb9684eaa3bf8b5e00d447, type: 3}
+  - bomb: {instanceID: 0}
+  - razor: {instanceID: 0}
+  - explosion: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
