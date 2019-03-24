@@ -5,17 +5,19 @@ using UnityEngine;
 public class scrapSpawner : MonoBehaviour
 {
     public GameObject[] scraps;
-	public float minSpawnTimer;
-	public float maxSpawnTimer;
+	// public float minSpawnTimer;
+	// public float maxSpawnTimer;
 	float spawnTimer;
 	int pipeNum, randUpgrade, randScrap;
 	float timeCount, randNum;
 	private bool gameover;
 	int index;
+	public float x1,x2;
+
 
 	// Use this for initialization
 	void Start () {
-		spawnTimer = 0;
+		spawnTimer = Random.Range(0f, 2f);
 		timeCount = 0f;
 	}
 	
@@ -26,7 +28,7 @@ public class scrapSpawner : MonoBehaviour
 		timeCount += Time.deltaTime;
 
 		randNum = Random.Range(0f, 100f);
-		pipeNum = Random.Range(0, 5);
+		pipeNum = Random.Range(0, 2);
 
 
 		if (randNum <= 5f)
@@ -65,29 +67,41 @@ public class scrapSpawner : MonoBehaviour
 		if (spawnTimer <= 0)
 		{
 			if (timeCount < 30f){
-				spawnTimer = Random.Range(1f,2f);
+				spawnTimer = Random.Range(2f,3f);
 			}
 			else {
-				spawnTimer = Random.Range(.5f,1.5f);
+				spawnTimer = Random.Range(1f,2f);
 			}
-
 
 			if (pipeNum == 0)
 			{
-				Instantiate(scraps[index], new Vector2(-4.5f, 6f), Quaternion.identity);
+				Instantiate(scraps[index], new Vector2(x1, 6f), Quaternion.identity);
 			}
-			else if (pipeNum == 2)
+			else if (pipeNum == 1)
 			{
-				Instantiate(scraps[index], new Vector2(-1.5f, 6f), Quaternion.identity);
+				Instantiate(scraps[index], new Vector2(x2, 6f), Quaternion.identity);
 			}
-			else if (pipeNum == 3)
-			{
-				Instantiate(scraps[index], new Vector2(1.5f, 6f), Quaternion.identity);
-			}
-			else
-			{
-				Instantiate(scraps[index], new Vector2(4.5f, 6f), Quaternion.identity);
-			}
+			
+
+			//Instantiate(scraps[index]);
+
+			
+			// if (pipeNum == 0)
+			// {
+			// 	Instantiate(scraps[index], new Vector2(-4.5f, 6f), Quaternion.identity);
+			// }
+			// else if (pipeNum == 2)
+			// {
+			// 	Instantiate(scraps[index], new Vector2(-1.5f, 6f), Quaternion.identity);
+			// }
+			// else if (pipeNum == 3)
+			// {
+			// 	Instantiate(scraps[index], new Vector2(1.5f, 6f), Quaternion.identity);
+			// }
+			// else
+			// {
+			// 	Instantiate(scraps[index], new Vector2(4.5f, 6f), Quaternion.identity);
+			// }
 		}
 
 		
