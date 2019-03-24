@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    
+
     private SpriteRenderer sr;
     private Collider2D coll;
     public Sprite playerSprite, hurtSprite, hurt1Sprite, deadSprite;
@@ -22,7 +22,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject gameOverCanvas;
 
-    // Start is called before the first frame update
+
+
     void Start()
     {
         Cursor.visible = false;
@@ -38,15 +39,14 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         timeCount += Time.deltaTime;
 
         if (sr.sprite != deadSprite)
         {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); 
-        transform.position = new Vector3(mousePos.x, mousePos.y, transform.position.z);
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = new Vector3(mousePos.x, mousePos.y, transform.position.z);
         }
         else
         {
@@ -99,7 +99,8 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (bomb.activeSelf == true) {
+            if (bomb.activeSelf == true)
+            {
                 if (Input.GetMouseButton(0))
                 {
                     DestroyAllObjects();
@@ -119,11 +120,12 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        
+
     }
 
-    void OnCollisionEnter2D (Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
+        print("Hurgh");
         if (col.gameObject.tag == "Battery")
         {
             Destroy(col.gameObject);
@@ -153,7 +155,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (col.gameObject.tag == "Enemy")
         {
-            Destroy (col.gameObject);
+            Destroy(col.gameObject);
             if (razor.activeSelf == true)
             {
                 // take no damage
@@ -182,18 +184,19 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    
+
     void DestroyAllObjects()
     {
-        gameObjects = GameObject.FindGameObjectsWithTag ("Enemy");
-         
-        for(var i = 0 ; i < gameObjects.Length ; i ++)
+        gameObjects = GameObject.FindGameObjectsWithTag("Enemy");
+
+        for (var i = 0; i < gameObjects.Length; i++)
         {
-             Destroy(gameObjects[i]);
+            Destroy(gameObjects[i]);
         }
     }
 
-     private void playsound(int index) {
+    private void playsound(int index)
+    {
         audioS.clip = sounds[index];
         audioS.Play();
     }

@@ -2,20 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class scrap : MonoBehaviour
+public class Scrap : MonoBehaviour
 {
     public float ySpeed;
+    public Sprite[] scrapSprites;
 
-	// Use this for initialization
-	void Start () {
-		GetComponent<Rigidbody2D>().velocity = new Vector2(0, ySpeed);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (transform.position.y < -6) {
-			Destroy(gameObject);
-		}
-	}
+    void Start()
+    {
+        GetComponent<SpriteRenderer>().sprite = scrapSprites[Random.Range(0, scrapSprites.Length - 1)];
+    }
 
+    void Update()
+    {
+        Vector2 moveAmount = new Vector2();
+        moveAmount.x = 0;
+        moveAmount.y = ySpeed;
+        transform.Translate(moveAmount * Time.deltaTime);
+
+        if (transform.position.y < -6)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
