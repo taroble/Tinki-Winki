@@ -7,6 +7,7 @@ public class Timer : MonoBehaviour
 {
 	float timeCount;
 	public Text text;
+    private bool gameover;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,16 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!gameover) {
+            gameRunning();
+        }
+        else {
+            // don't update timer
+        }
+    }
+
+    void gameRunning(){
         timeCount += Time.deltaTime;
-        text.text = timeCount.ToString("###");
+        text.text = timeCount.ToString("0000");
     }
 }
