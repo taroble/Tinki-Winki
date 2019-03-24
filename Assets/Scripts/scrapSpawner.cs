@@ -67,7 +67,7 @@ public class scrapSpawner : MonoBehaviour
 			if (timeCount < 30f){
 				spawnTimer = Random.Range(1f,2f);
 			}
-			else if (timeCount == 30f){
+			else {
 				spawnTimer = Random.Range(.5f,1.5f);
 			}
 
