@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    
+
     private SpriteRenderer sr;
     private Collider2D coll;
     public Sprite playerSprite, hurtSprite, hurt1Sprite, deadSprite;
@@ -19,8 +19,10 @@ public class PlayerController : MonoBehaviour
     GameObject[] gameObjects;
     AudioSource audioS;
     public AudioClip[] sounds;
+    public Timer timerObject;
 
     public GameObject gameOverCanvas;
+    public Text gameOverScoreText;
 
     // Start is called before the first frame update
     void Start()
@@ -45,13 +47,12 @@ public class PlayerController : MonoBehaviour
 
         if (sr.sprite != deadSprite)
         {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); 
-        transform.position = new Vector3(mousePos.x, mousePos.y, transform.position.z);
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = new Vector3(mousePos.x, mousePos.y, transform.position.z);
         }
         else
         {
             coll.enabled = false;
-            gameOverCanvas.SetActive(true);
         }
 
         if (timeCount >= seconds)
@@ -99,7 +100,8 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (bomb.activeSelf == true) {
+            if (bomb.activeSelf == true)
+            {
                 if (Input.GetMouseButton(0))
                 {
                     DestroyAllObjects();
@@ -119,10 +121,10 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        
+
     }
 
-    void OnCollisionEnter2D (Collision2D col)
+    void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Battery")
         {
@@ -153,7 +155,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (col.gameObject.tag == "Enemy")
         {
-            Destroy (col.gameObject);
+            Destroy(col.gameObject);
             if (razor.activeSelf == true)
             {
                 // take no damage
@@ -178,23 +180,41 @@ public class PlayerController : MonoBehaviour
                     sr.sprite = deadSprite;
                     health.sprite = noHealth;
                     playsound(2);
+                    GameOver();
                 }
             }
         }
     }
-    
+
     void DestroyAllObjects()
     {
-        gameObjects = GameObject.FindGameObjectsWithTag ("Enemy");
-         
-        for(var i = 0 ; i < gameObjects.Length ; i ++)
+        gameObjects = GameObject.FindGameObjectsWithTag("Enemy");
+
+        for (var i = 0; i < gameObjects.Length; i++)
         {
-             Destroy(gameObjects[i]);
+            Destroy(gameObjects[i]);
         }
     }
 
-     private void playsound(int index) {
+    void playsound(int index)
+    {
         audioS.clip = sounds[index];
         audioS.Play();
+    }
+
+    void GameOver()
+    {
+        gameOverCanvas.SetActive(true);
+        Cursor.visible = true;
+        timerObject.gameover = true;
+
+        if (GameMaster.instance.CheckIfHighscore(timerObject.score))
+        {
+            gameOverScoreText.text = "New Highscore! " + timerObject.score.ToString("0");
+        }
+        else
+        {
+            gameOverScoreText.text = "Score: " + timerObject.score.ToString("0");
+        }
     }
 }

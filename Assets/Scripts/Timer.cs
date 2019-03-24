@@ -5,30 +5,38 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-	float timeCount;
-	public Text text;
-    private bool gameover;
+    float timeCount;
+    [HideInInspector]
+    public int score;
+    public Text text;
+    [HideInInspector]
+    public bool gameover;
 
-    // Start is called before the first frame update
     void Start()
     {
         timeCount = 0f;
-
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (!gameover) {
+        if (!gameover)
+        {
             gameRunning();
         }
-        else {
+        else
+        {
             // don't update timer
         }
     }
 
-    void gameRunning(){
+    void gameRunning()
+    {
         timeCount += Time.deltaTime;
-        text.text = timeCount.ToString("0000");
+        if (timeCount >= 1)
+        {
+            timeCount -= 1;
+            score++;
+        }
+        text.text = score.ToString("0000");
     }
 }
